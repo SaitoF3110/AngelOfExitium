@@ -10,6 +10,9 @@ public class CharacterData : ScriptableObject
     public string _name;
     /// <summary>キャラクターID</summary>
     public int _chatacterID;//保存時に使う
+    /// <summary>キャラクター画像</summary>
+    public Sprite _sprite;
+
     //↓各ステータス
     /// <summary>初期攻撃力</summary>
     public int _defaultAttack;
@@ -19,6 +22,7 @@ public class CharacterData : ScriptableObject
     public int _defaultHealth;
     /// <summary>初期スキルポイント</summary>
     public int _defaultSp;
+
     //↓レベルが上がった時の上昇量設定
     /// <summary>攻撃力上昇量</summary>
     public int _incAttack;
