@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 49f9e3dc4ceed614ab52a362401f6d95
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FK-Kaisei-Decol
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 576d191abfbb65a4cbf1816323c25b7f, type: 3}
+  - {fileID: 12800000, guid: 37211b0bf4ad87549a1923c30f9470bc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
