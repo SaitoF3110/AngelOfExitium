@@ -12,7 +12,17 @@ public class SkillData : ScriptableObject
     /// <summary>スキルID保存時に使用</summary>
     public int _skillID;
 
+    //スキルによる消費↓↓
+    /// <summary>消費SP</summary>
+    public int _spendSP;
+    /// <summary>消費HP</summary>
+    public int _spendHP;
+
     //スキル対象範囲設定↓↓
+    /// <summary>攻撃エリア。範囲図参照。</summary>
+    [Tooltip("0=攻撃しない")]
+    public int[] _attackArea;
+
     /// <summary>攻撃距離</summary>
     [Tooltip("0=攻撃しない　1～攻撃距離　99=選択可能")]
     public int _range;
@@ -27,6 +37,12 @@ public class SkillData : ScriptableObject
     /// <summary>(_range=0)味方指定</summary>
     [Tooltip("_rangeが0の時、Trueで味方全員を指定するスキルになる")]
     public bool _allTarget = false;
+
+    //与えるエフェクト↓↓
+    [Tooltip("エフェクトの種類")]
+    public EffectEnum.Effect _effect = 0;
+    [Tooltip("エフェクトの持続時間")]
+    public int _effectTurn = 0;
 
     //単発スキル↓↓
     [Tooltip("使用キャラの攻撃力に基づくスキルのHP増減量。パーセンテージで指定。\nマイナスの値は回復効果になる")]

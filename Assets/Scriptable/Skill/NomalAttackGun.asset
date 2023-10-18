@@ -14,6 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skillName: 
   _skillInfo: []
+  _skillID: 0
+  _spendSP: 0
+  _spendHP: 0
+  _attackArea: 03000000
   _range: 0
   _width: 1
   _penetratValue: 0
+  _allTarget: 0
+  _effect: 0
+  _effectTurn: 0
+  _damage: 100
+  _attackPercentage: 100
+  _diffencePercentage: 100

@@ -22,6 +22,9 @@ public class CharacterData : ScriptableObject
     public int _defaultHealth;
     /// <summary>初期スキルポイント</summary>
     public int _defaultSp;
+    /// <summary>戦闘開始初期位置</summary>
+    [Range(-1, 1)]
+    public int _defaultPosition;
 
     //↓レベルが上がった時の上昇量設定
     /// <summary>攻撃力上昇量</summary>
@@ -35,4 +38,10 @@ public class CharacterData : ScriptableObject
 
     /// <summary>最大レベル</summary>
     public int _maxLevel;//この数値まで到達可
+
+    [Tooltip("所持スキル（六つまで）")]
+    public SkillData[] _skills;
+
+    [Tooltip("耐性を持つエフェクト")]
+    public EffectEnum[] _ineffective;
 }

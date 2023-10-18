@@ -13,5 +13,18 @@ MonoBehaviour:
   m_Name: Arcenciel
   m_EditorClassIdentifier: 
   _name: "\u30A2\u30EB\u30AB\u30F3\u30B7\u30A8\u30EB"
-  _attack: 0
-  _diffence: 0
+  _chatacterID: 0
+  _sprite: {fileID: 0}
+  _defaultAttack: 0
+  _defaultDiffence: 0
+  _defaultHealth: 0
+  _defaultSp: 0
+  _defaultPosition: 0
+  _incAttack: 0
+  _incDiffence: 0
+  _incHealth: 0
+  _incSp: 0
+  _maxLevel: 0
+  _skills:
+  - {fileID: 11400000, guid: 8ed050a298b93ae439ebd0ea2d3cd18e, type: 2}
+  _ineffective: []
