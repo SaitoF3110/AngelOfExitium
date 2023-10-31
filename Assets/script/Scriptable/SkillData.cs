@@ -19,9 +19,6 @@ public class SkillData : ScriptableObject
     public int _spendHP;
 
     //スキル対象範囲設定↓↓
-    /// <summary>攻撃エリア。範囲図参照。</summary>
-    [Tooltip("0=攻撃しない")]
-    public int[] _attackArea;
     /// <summary>攻撃エリア。自身との距離(x,y)。上がyプラス</summary>
     public Vector2[] _attackAreas;
 
@@ -48,11 +45,13 @@ public class SkillData : ScriptableObject
 
     //単発スキル↓↓
     [Tooltip("使用キャラの攻撃力に基づくスキルのHP増減量。パーセンテージで指定。\nマイナスの値は回復効果になる")]
-    public int _damage = 100;
+    public int _hpDamage = 100;
+    [Tooltip("使用キャラの攻撃力に基づくスキルのSP増減量。パーセンテージで指定。\nマイナスの値は回復効果になる")]
+    public int _spDamage = 100;
 
-    //ターン継続系スキル↓↓
-    [Tooltip("使用キャラの攻撃力に基づく攻撃力上昇量。パーセンテージで指定。")]
+    //ターン継続（強化）系スキル↓↓
+    [Tooltip("使用キャラの攻撃力に基づく攻撃力上昇量。パーセンテージで指定。ターン継続系スキル。")]
     public int _attackPercentage = 100;
-    [Tooltip("使用キャラの防御力に基づく防御力上昇量。パーセンテージで指定。")]
+    [Tooltip("使用キャラの防御力に基づく防御力上昇量。パーセンテージで指定。ターン継続系スキル。")]
     public int _diffencePercentage = 100;
 }
