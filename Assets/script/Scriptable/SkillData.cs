@@ -22,6 +22,8 @@ public class SkillData : ScriptableObject
     /// <summary>攻撃エリア。範囲図参照。</summary>
     [Tooltip("0=攻撃しない")]
     public int[] _attackArea;
+    /// <summary>攻撃エリア。自身との距離(x,y)。上がyプラス</summary>
+    public Vector2[] _attackAreas;
 
     /// <summary>攻撃距離</summary>
     [Tooltip("0=攻撃しない　1～攻撃距離　99=選択可能")]

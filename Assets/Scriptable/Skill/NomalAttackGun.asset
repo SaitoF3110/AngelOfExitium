@@ -18,6 +18,10 @@ MonoBehaviour:
   _spendSP: 0
   _spendHP: 0
   _attackArea: 03000000
+  _attackAreas:
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 3, y: 0}
   _range: 0
   _width: 1
   _penetratValue: 0
