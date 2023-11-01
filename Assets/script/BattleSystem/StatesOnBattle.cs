@@ -25,19 +25,24 @@ public class StatesOnBattle : MonoBehaviour
         //ƒfƒŠƒQ[ƒg‚Ì“o˜^
         _skillData = GameObject.FindObjectOfType<SkillManager>();
         _skillData.SkillArea += UnderAttack;
+        _position = new Vector2(4,1);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
 
-        }
     }
     /// <summary>©g‚ªUŒ‚”ÍˆÍ“à‚©’²‚×‚é</summary>
-    void UnderAttack(SkillData skill,List<Vector2> _AA,List<Vector2> _AAA)
+    void UnderAttack(CharacterData character,List<Vector2> _AA,List<Vector2> _AAA)
     {
-
+        foreach (var aa in _AA)
+        {
+            if(aa.y == _position.y && aa.x == _position.x)
+            {
+                Debug.Log("UŒ‚”ÍˆÍ“àIII");
+                break;
+            }
+        }
     }
     /// <summary>UŒ‚‚ğó‚¯‚½‚Ìˆ—</summary>
     void DamageProcess()

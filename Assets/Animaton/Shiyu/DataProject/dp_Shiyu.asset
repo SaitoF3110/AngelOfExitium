@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1e551922b81ce40b6579726b70c93f, type: 3}
+  m_Name: dp_Shiyu
+  m_EditorClassIdentifier: 
+  Version: 65536
+  Name: Shiyu
+  DataCellMap: {fileID: 11400000, guid: 84df6aa000add7c43b93a0e586d8a898, type: 2}
+  DataAnimation:
+  - {fileID: 11400000, guid: 041c6656b16f4ea4cac08a1b113aa27b, type: 2}
+  DataEffect: []
+  DataSequence: []
+  PrefabAnimation:
+  - {fileID: 1007736470529387424, guid: d0497a19b4cb4324caf547f95ac856a2, type: 3}
+  PrefabEffect: []
+  TableTexture:
+  - {fileID: 2800000, guid: 147dfc19c9237864e86137a4e96efe75, type: 3}
