@@ -7,7 +7,7 @@ public class InGameUI : MonoBehaviour
     RaycastHit2D hitObject;
     RaycastHit2D hittedObject;
     bool allowClick = false;
-    GameObject clickedGameObject;
+    public GameObject clickedGameObject;
     void Start()
     {
         
@@ -18,7 +18,7 @@ public class InGameUI : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-
+            Debug.Log(Input.mousePosition);
             clickedGameObject = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

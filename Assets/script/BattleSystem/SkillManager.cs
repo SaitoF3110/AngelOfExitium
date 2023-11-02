@@ -4,11 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 using static UnityEditor.Progress;
+using static UnityEngine.GraphicsBuffer;
 
 public class SkillManager : MonoBehaviour
 {
     [SerializeField] SkillData skillData;
     [SerializeField]CharacterData characterData;
+    [SerializeField] GameObject character;
+    BattleManager _battleManager;
+    Vector2 _skillChara;
     /// <summary>発動スキル。各ターン毎に初期化</summary>
     public Dictionary<CharacterData, SkillData> _skills = new Dictionary<CharacterData, SkillData>();//キャラクター情報から並べ替える
 
@@ -22,6 +26,9 @@ public class SkillManager : MonoBehaviour
     void Start()
     {
         _skills.Add(characterData, skillData);
+        //デリゲート登録
+        _battleManager = GameObject.FindObjectOfType<BattleManager>();
+        _battleManager.CharaPosition += CharactorArea;
     }
 
     // Update is called once per frame
@@ -29,8 +36,12 @@ public class SkillManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            SkillAct(new Vector2(2,2),characterData);
+            SkillAct(_skillChara,characterData);
         }
+    }
+    void CharactorArea(GameObject[] gameObjects, Vector2[][] vector2s) 
+    {
+        _skillChara = vector2s[Array.IndexOf(gameObjects, character)][0];
     }
     /// <summary>スキルの攻撃範囲を計算→デリゲートで渡す
     /// キャラクターのスキル選択時に呼び出し</summary>

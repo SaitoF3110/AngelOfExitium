@@ -23,7 +23,10 @@ public class BattleManager : MonoBehaviour
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            CharactorPositions();
+        }
     }
     /// <summary>戦闘中の全キャラクターオブジェクトとその位置を渡す</summary>
     void CharactorPositions()

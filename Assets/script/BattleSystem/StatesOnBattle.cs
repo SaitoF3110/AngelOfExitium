@@ -41,12 +41,12 @@ public class StatesOnBattle : MonoBehaviour
         if (_character._isFriend)
         {
             _position = new Vector2[1]{ new Vector2((int)this.transform.localPosition.x / 5, 
-                (int)this.transform.localPosition.y / 5) };
+                (int)this.transform.localPosition.z / -5) };
         }
         else
         {
             _position = new Vector2[1]{ new Vector2((int)this.transform.localPosition.x / 5 + 4, 
-                (int)this.transform.localPosition.y / 5)};
+                (int)this.transform.localPosition.z / -5)};
         }
         _battleManager._ObjectPositions[this.gameObject] = _position;
     }
