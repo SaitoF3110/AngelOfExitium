@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FlameController : MonoBehaviour
 {
-    [SerializeField] bool _isEnemy;
+    public bool _isEnemy;
     [SerializeField] int _y;
-    [SerializeField] Color _color;
-    Color _defaultColor;
+    public GameObject _battleObject;
     public Vector2 _position;
     SkillManager _skillData;
     BattleManager _battleManager;
+    BattleFlameManager _bfm;
     SpriteRenderer _sr;
     void Start()
     {
@@ -29,7 +29,7 @@ public class FlameController : MonoBehaviour
         _skillData.SkillArea += AttackArea;
         _battleManager = GameObject.FindObjectOfType<BattleManager>();
         _battleManager.CharaPosition += CharactorArea;
-        _defaultColor = _sr.color;
+        _bfm = GameObject.FindObjectOfType<BattleFlameManager>();
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class FlameController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
-            _sr.color = _defaultColor;
+            _sr.color = _bfm._default;
         }
     }
     void CharactorArea(GameObject[] gameObjects, Vector2[][] vector2s)
@@ -46,8 +46,13 @@ public class FlameController : MonoBehaviour
         {
             if (vector2s[i][0].x == _position.x && vector2s[i][0].y == _position.y)
             {
-                _sr.color = Color.blue;
+                _battleObject = gameObjects[i];
+                _sr.color = _bfm._friend;
                 break;
+            }
+            if(i == gameObjects.Length - 1)
+            {
+                _battleObject = null;
             }
         }
     }
@@ -57,7 +62,7 @@ public class FlameController : MonoBehaviour
         {
             if (aa.y == _position.y && aa.x == _position.x)
             {
-                _sr.color = _color;
+                _sr.color = _bfm._AA;
                 break;
             }
         }

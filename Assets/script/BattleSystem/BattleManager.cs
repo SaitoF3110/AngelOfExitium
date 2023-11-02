@@ -8,6 +8,9 @@ public class BattleManager : MonoBehaviour
     int _turn = 0;
     /// <summary>バトルオブジェクトの位置</summary>
     public Dictionary<GameObject, Vector2[]> _ObjectPositions = new Dictionary<GameObject, Vector2[]>();//位置が複数ある敵もいる
+    /// <summary>バトルオブジェクトが移動したかどうか</summary>
+    public bool _isMoved = false;
+
 
     /// <summary>キャラクターのポジション</summary>
     event Action<GameObject[], Vector2[][]> _charaPosi;
@@ -23,10 +26,7 @@ public class BattleManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            CharactorPositions();
-        }
+        CharactorPositions();
     }
     /// <summary>戦闘中の全キャラクターオブジェクトとその位置を渡す</summary>
     void CharactorPositions()

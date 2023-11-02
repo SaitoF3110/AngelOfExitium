@@ -28,7 +28,7 @@ public class StatesOnBattle : MonoBehaviour
         //ƒfƒŠƒQ[ƒg‚Ì“o˜^
         _skillData = GameObject.FindObjectOfType<SkillManager>();
         _skillData.SkillArea += UnderAttack;
-        _position[0] = new Vector2(4,1);
+        _position[0] = new Vector2(-1,-1);
 
         _battleManager = GameObject.FindObjectOfType<BattleManager>();
         //©g‚ÌˆÊ’u‚ğ“o˜^
