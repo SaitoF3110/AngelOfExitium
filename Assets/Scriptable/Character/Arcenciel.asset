@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: "\u30A2\u30EB\u30AB\u30F3\u30B7\u30A8\u30EB"
   _chatacterID: 0
   _sprite: {fileID: 0}
+  _isFriend: 1
   _defaultAttack: 0
   _defaultDiffence: 0
   _defaultHealth: 0

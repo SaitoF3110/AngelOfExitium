@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,12 @@ public class StatesOnBattle : MonoBehaviour
     int _diffence;
     int _sp;
     SkillManager _skillData;
+    BattleManager _battleManager;
     /// <summary>現在の座標</summary>
-    Vector2 _position = new Vector2(0,0);
+    Vector2[] _position = new Vector2[1] {new Vector2(1,1)};
     /// <summary>計算用攻撃エリア。[マス目の数,x座標,y座標]</summary>
     public int[,,] _areaOnSystem;
+
     void Start()
     {
         //とりあえず初期値で取得
@@ -25,19 +28,34 @@ public class StatesOnBattle : MonoBehaviour
         //デリゲートの登録
         _skillData = GameObject.FindObjectOfType<SkillManager>();
         _skillData.SkillArea += UnderAttack;
-        _position = new Vector2(4,1);
+        _position[0] = new Vector2(4,1);
+
+        _battleManager = GameObject.FindObjectOfType<BattleManager>();
+        //自身の位置を登録
+        _battleManager._ObjectPositions.Add(this.gameObject, _position);
     }
 
     void Update()
     {
-
+        //自身の位置をマネージャーのディクショナリーに上書きし続ける
+        if (_character._isFriend)
+        {
+            _position = new Vector2[1]{ new Vector2((int)this.transform.localPosition.x / 5, 
+                (int)this.transform.localPosition.y / 5) };
+        }
+        else
+        {
+            _position = new Vector2[1]{ new Vector2((int)this.transform.localPosition.x / 5 + 4, 
+                (int)this.transform.localPosition.y / 5)};
+        }
+        _battleManager._ObjectPositions[this.gameObject] = _position;
     }
     /// <summary>自身が攻撃範囲内か調べる</summary>
     void UnderAttack(CharacterData character,List<Vector2> _AA,List<Vector2> _AAA)
     {
         foreach (var aa in _AA)
         {
-            if(aa.y == _position.y && aa.x == _position.x)
+            if(aa.y == _position[0].y && aa.x == _position[0].x)
             {
                 Debug.Log("攻撃範囲内！！！");
                 break;

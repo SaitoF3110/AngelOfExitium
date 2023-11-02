@@ -12,6 +12,8 @@ public class CharacterData : ScriptableObject
     public int _chatacterID;//保存時に使う
     /// <summary>キャラクター画像</summary>
     public Sprite _sprite;
+    /// <summary>味方（操作）キャラかどうか</summary>
+    public bool _isFriend = false;
 
     //↓各ステータス
     /// <summary>初期攻撃力</summary>
