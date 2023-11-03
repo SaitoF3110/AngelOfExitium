@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 using static UnityEditor.Progress;
 using static UnityEngine.GraphicsBuffer;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : MonoBehaviour ,ITurn
 {
     [SerializeField] SkillData skillData;
     [SerializeField]CharacterData characterData;
@@ -15,6 +16,8 @@ public class SkillManager : MonoBehaviour
     Vector2 _skillChara;
     /// <summary>発動スキル。各ターン毎に初期化</summary>
     public Dictionary<CharacterData, SkillData> _skills = new Dictionary<CharacterData, SkillData>();//キャラクター情報から並べ替える
+    /// <summary>行動順。並べ替え可能。各ターン毎に初期化</summary>
+    public List<CharacterData> _actOrder = new List<CharacterData>();
 
     /// <summary>＜スキルデータ、攻撃範囲、攻撃可能範囲＞</summary>
     event Action<CharacterData, List<Vector2>, List<Vector2>> _skillArea;
@@ -54,11 +57,16 @@ public class SkillManager : MonoBehaviour
         List<Vector2> _AA = new List<Vector2>();
         /// <summary>AttackAble Area</summary>
         List<Vector2> _AAA = new List<Vector2>();
+        int _friend = 1;
+        if(!character._isFriend)
+        {
+            _friend = -1;
+        }
         for(int i = 0;i < _skills[character]._attackAreas.Length; i++)
         {
             //現在位置と距離から攻撃範囲を計算
-            _AA.Add(new Vector2(posi.x + _skills[character]._attackAreas[i].x, posi.y + _skills[character]._attackAreas[i].y));
-            _AAA.Add(new Vector2(posi.x + _skills[character]._attackAreas[i].x, posi.y + _skills[character]._attackAreas[i].y));
+            _AA.Add(new Vector2(posi.x + _skills[character]._attackAreas[i].x * _friend, posi.y + _skills[character]._attackAreas[i].y));
+            _AAA.Add(new Vector2(posi.x + _skills[character]._attackAreas[i].x * _friend, posi.y + _skills[character]._attackAreas[i].y));
         }
         //攻撃可能範囲の計算↓↓↓
         if(_skills[character]._range != 0 || _skills[character]._range != 99)
@@ -71,5 +79,17 @@ public class SkillManager : MonoBehaviour
             _AAA.RemoveAll(s => _AAA.IndexOf(s) > _skills[character]._penetratValue);//貫通できる分だけ残す
             _skillArea(character, _AA, _AAA);
         }
+    }
+    public void Friend()
+    {
+
+    }
+    public void FriendAction()
+    {
+
+    }
+    public void Enemy()
+    {
+
     }
 }

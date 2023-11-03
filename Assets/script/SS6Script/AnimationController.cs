@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class kirikae : MonoBehaviour
+public class AnimationController : MonoBehaviour
 {
     [SerializeField] GameObject _stay;
     [SerializeField] GameObject _attack1;

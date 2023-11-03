@@ -6,10 +6,12 @@ using UnityEngine;
 public class StatesOnBattle : MonoBehaviour
 {
     [SerializeField] CharacterData _character;
-    int _health;
+    public int _maxHealth;
+    public int _health;
+    public int _maxSp;
+    public int _sp;
     int _attack;
     int _diffence;
-    int _sp;
     SkillManager _skillData;
     BattleManager _battleManager;
     /// <summary>現在の座標</summary>
@@ -23,6 +25,10 @@ public class StatesOnBattle : MonoBehaviour
         //装備、バフデバフの処理は後ほど
         _attack = _character._defaultAttack;
         _diffence = _character._defaultDiffence;
+        _health = _character._defaultHealth;
+        _maxHealth = _character._defaultHealth;
+        _sp = _character._defaultSp;
+        _maxSp = _character._defaultSp;
         //初期位置の処理もここに
 
         //デリゲートの登録
@@ -58,6 +64,7 @@ public class StatesOnBattle : MonoBehaviour
             if(aa.y == _position[0].y && aa.x == _position[0].x)
             {
                 Debug.Log("攻撃範囲内！！！");
+                _health -= 10;
                 break;
             }
         }
@@ -65,6 +72,6 @@ public class StatesOnBattle : MonoBehaviour
     /// <summary>攻撃を受けた時の処理</summary>
     void DamageProcess()
     {
-
+        
     }
 }

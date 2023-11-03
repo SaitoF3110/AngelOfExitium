@@ -18,8 +18,8 @@ MonoBehaviour:
   _isFriend: 1
   _defaultAttack: 0
   _defaultDiffence: 0
-  _defaultHealth: 0
-  _defaultSp: 0
+  _defaultHealth: 100
+  _defaultSp: 20
   _defaultPosition: 0
   _incAttack: 0
   _incDiffence: 0

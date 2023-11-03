@@ -11,7 +11,6 @@ public class BattleManager : MonoBehaviour
     /// <summary>バトルオブジェクトが移動したかどうか</summary>
     public bool _isMoved = false;
 
-
     /// <summary>キャラクターのポジション</summary>
     event Action<GameObject[], Vector2[][]> _charaPosi;
     public Action<GameObject[], Vector2[][]> CharaPosition
@@ -27,6 +26,7 @@ public class BattleManager : MonoBehaviour
     void Update()
     {
         CharactorPositions();
+        Turn();
     }
     /// <summary>戦闘中の全キャラクターオブジェクトとその位置を渡す</summary>
     void CharactorPositions()
@@ -51,15 +51,15 @@ public class BattleManager : MonoBehaviour
             //とりあえずテキトー
             //後で必要になった時修正
             ITurn i = obj.GetComponent<ITurn>();
-            if (1 + 1 == 0)
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 i?.Friend();
             }
-            else if (1 == 1)
+            else if (Input.GetKeyDown(KeyCode.X))
             {
                 i?.FriendAction();
             }
-            else if (1 == 1)
+            else if (Input.GetKeyDown(KeyCode.C))
             {
                 i?.Enemy();
             }
