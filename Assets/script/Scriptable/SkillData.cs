@@ -44,10 +44,10 @@ public class SkillData : ScriptableObject
     public int _effectTurn = 0;
 
     //単発スキル↓↓
-    [Tooltip("使用キャラの攻撃力に基づくスキルのHP増減量。パーセンテージで指定。\nマイナスの値は回復効果になる")]
+    [Tooltip("使用キャラの攻撃力に基づくダメージ量。パーセンテージ。\nマイナスの値は回復効果になる")]
     public int _hpDamage = 100;
-    [Tooltip("使用キャラの攻撃力に基づくスキルのSP増減量。パーセンテージで指定。\nマイナスの値は回復効果になる")]
-    public int _spDamage = 100;
+    [Tooltip("固定SP減少量量。\nマイナスの値は回復効果になる")]
+    public int _spDamage = 0;
 
     //ターン継続（強化）系スキル↓↓
     [Tooltip("使用キャラの攻撃力に基づく攻撃力上昇量。パーセンテージで指定。ターン継続系スキル。")]

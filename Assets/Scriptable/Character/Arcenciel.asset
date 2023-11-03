@@ -27,5 +27,6 @@ MonoBehaviour:
   _incSp: 0
   _maxLevel: 0
   _skills:
+  - {fileID: 11400000, guid: d6ff3a57ddb77964db84249d666ef9ea, type: 2}
   - {fileID: 11400000, guid: 8ed050a298b93ae439ebd0ea2d3cd18e, type: 2}
   _ineffective: []

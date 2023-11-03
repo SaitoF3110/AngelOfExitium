@@ -20,8 +20,8 @@ public class SkillManager : MonoBehaviour ,ITurn
     public List<CharacterData> _actOrder = new List<CharacterData>();
 
     /// <summary>＜スキルデータ、攻撃範囲、攻撃可能範囲＞</summary>
-    event Action<CharacterData, List<Vector2>, List<Vector2>> _skillArea;
-    public Action<CharacterData, List<Vector2>, List<Vector2>> SkillArea
+    event Action<GameObject, List<Vector2>, List<Vector2>> _skillArea;
+    public Action<GameObject, List<Vector2>, List<Vector2>> SkillArea
     {
         get { return _skillArea; }
         set { _skillArea = value; }
@@ -39,7 +39,8 @@ public class SkillManager : MonoBehaviour ,ITurn
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            SkillAct(_skillChara,characterData);
+            //スキル辞書に登録→計算
+            SkillAct(_skillChara,character);
         }
     }
     void CharactorArea(GameObject[] gameObjects, Vector2[][] vector2s) 
@@ -51,8 +52,10 @@ public class SkillManager : MonoBehaviour ,ITurn
 
     /// <param name="posi">スキル発動者の位置</param>
     /// <param name="skill">スキルデータ</param>
-    void SkillAct(Vector2 posi,CharacterData character)
+    void SkillAct(Vector2 posi,GameObject battleObj)
     {
+        StatesOnBattle states = battleObj.GetComponent<StatesOnBattle>();
+        CharacterData character = states._character;
         /// <summary>Attack Area</summary>
         List<Vector2> _AA = new List<Vector2>();
         /// <summary>AttackAble Area</summary>
@@ -77,7 +80,7 @@ public class SkillManager : MonoBehaviour ,ITurn
             _AAA.RemoveAll(s => posi.y != s.y);
             //最初の数マス以外を削除
             _AAA.RemoveAll(s => _AAA.IndexOf(s) > _skills[character]._penetratValue);//貫通できる分だけ残す
-            _skillArea(character, _AA, _AAA);
+            _skillArea(battleObj, _AA, _AAA);
         }
     }
     public void Friend()

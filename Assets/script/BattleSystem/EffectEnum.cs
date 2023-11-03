@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EffectEnum : MonoBehaviour
 {
+    //‚ ‚Æ‚ÅScriptable‚É•ÏX—\’è
     public enum Effect
     {
         None,

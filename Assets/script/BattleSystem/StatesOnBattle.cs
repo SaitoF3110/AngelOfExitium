@@ -5,19 +5,23 @@ using UnityEngine;
 /// <summary>キャラクターごとのバトル時の一時ステータス </summary>
 public class StatesOnBattle : MonoBehaviour
 {
-    [SerializeField] CharacterData _character;
+    public CharacterData _character;
     public int _maxHealth;
     public int _health;
     public int _maxSp;
     public int _sp;
-    int _attack;
-    int _diffence;
+    //このAttackとDiffenceは一つの戦闘中不変
+    //バフデバフは攻撃判定時に計算
+    public int _attack;
+    public int _diffence;
     SkillManager _skillData;
     BattleManager _battleManager;
     /// <summary>現在の座標</summary>
     Vector2[] _position = new Vector2[1] {new Vector2(1,1)};
     /// <summary>計算用攻撃エリア。[マス目の数,x座標,y座標]</summary>
     public int[,,] _areaOnSystem;
+    //現在所持しているバフデバフ↓
+    List<EffectEnum.Effect> _effects = new List<EffectEnum.Effect>();
 
     void Start()
     {
@@ -57,21 +61,27 @@ public class StatesOnBattle : MonoBehaviour
         _battleManager._ObjectPositions[this.gameObject] = _position;
     }
     /// <summary>自身が攻撃範囲内か調べる</summary>
-    void UnderAttack(CharacterData character,List<Vector2> _AA,List<Vector2> _AAA)
+    void UnderAttack(GameObject battleObj,List<Vector2> _AA,List<Vector2> _AAA)
     {
         foreach (var aa in _AA)
         {
             if(aa.y == _position[0].y && aa.x == _position[0].x)
             {
                 Debug.Log("攻撃範囲内！！！");
-                _health -= 10;
+                StatesOnBattle states = battleObj.GetComponent<StatesOnBattle>();
+                CharacterData character = states._character;
+                StatesOnBattle _states = battleObj.GetComponent<StatesOnBattle>();
+
+                DamageProcess(_states._attack, _skillData._skills[character]);
                 break;
             }
         }
     }
     /// <summary>攻撃を受けた時の処理</summary>
-    void DamageProcess()
+    void DamageProcess(int character,SkillData skill)
     {
-        
+        float skillDamage = skill._hpDamage;
+        float damage = skillDamage / 100 * character;
+        _health -= (int)damage;
     }
 }

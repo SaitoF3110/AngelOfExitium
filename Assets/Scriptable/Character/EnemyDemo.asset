@@ -16,7 +16,7 @@ MonoBehaviour:
   _chatacterID: 0
   _sprite: {fileID: 0}
   _isFriend: 0
-  _defaultAttack: 5
+  _defaultAttack: 10
   _defaultDiffence: 5
   _defaultHealth: 70
   _defaultSp: 5

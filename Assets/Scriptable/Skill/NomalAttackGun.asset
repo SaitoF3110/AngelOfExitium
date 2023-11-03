@@ -15,7 +15,7 @@ MonoBehaviour:
   _skillName: gun
   _skillInfo: []
   _skillID: 0
-  _spendSP: 0
+  _spendSP: 5
   _spendHP: 0
   _attackAreas:
   - {x: 1, y: 0}
@@ -27,7 +27,7 @@ MonoBehaviour:
   _allTarget: 0
   _effect: 0
   _effectTurn: 0
-  _hpDamage: 100
-  _spDamage: 100
+  _hpDamage: 150
+  _spDamage: 0
   _attackPercentage: 100
   _diffencePercentage: 100

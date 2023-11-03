@@ -56,7 +56,7 @@ public class FlameController : MonoBehaviour
             }
         }
     }
-    void AttackArea(CharacterData character, List<Vector2> _AA, List<Vector2> _AAA)
+    void AttackArea(GameObject character, List<Vector2> _AA, List<Vector2> _AAA)
     {
         foreach (var aa in _AA)
         {

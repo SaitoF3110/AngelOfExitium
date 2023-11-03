@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class CharactorDrag : MonoBehaviour
+public class CharactorDrag : MonoBehaviour, ITurn
 {
     public GameObject dragGameObject;
     public GameObject clickGameObject;
@@ -12,6 +12,7 @@ public class CharactorDrag : MonoBehaviour
     bool _isDragging = false;
     Vector3 _mouseDown;
     Vector3 _mouseMove;
+    bool _allowDrag = true;
     void Start()
     {
 
@@ -32,7 +33,7 @@ public class CharactorDrag : MonoBehaviour
                 clickGameObject = hit.collider.gameObject;
             }
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && _allowDrag)
         {
             //Rayによるマウス当たり判定
             dragGameObject = null;
@@ -68,17 +69,18 @@ public class CharactorDrag : MonoBehaviour
         {
             _isDragging = false;
         }
+
     }
-    void MouseDrag()
+    public void Friend()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            _mouseDown = Input.mousePosition;//クリック時の座標取得
-
-        }
-        if (Input.GetMouseButton(0))
-        {
-
-        }
+        _allowDrag = true;
+    }
+    public void FriendAction()
+    {
+        _allowDrag = false;
+    }
+    public void Enemy()
+    {
+        _allowDrag = false;
     }
 }
