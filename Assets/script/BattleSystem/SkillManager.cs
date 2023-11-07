@@ -95,4 +95,8 @@ public class SkillManager : MonoBehaviour ,ITurn
     {
 
     }
+    public void EnemyAction()
+    {
+
+    }
 }

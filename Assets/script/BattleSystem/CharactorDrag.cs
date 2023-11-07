@@ -83,4 +83,8 @@ public class CharactorDrag : MonoBehaviour, ITurn
     {
         _allowDrag = false;
     }
+    public void EnemyAction()
+    {
+
+    }
 }

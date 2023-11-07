@@ -67,21 +67,25 @@ public class StatesOnBattle : MonoBehaviour
         {
             if(aa.y == _position[0].y && aa.x == _position[0].x)
             {
-                Debug.Log("攻撃範囲内！！！");
                 StatesOnBattle states = battleObj.GetComponent<StatesOnBattle>();
                 CharacterData character = states._character;
                 StatesOnBattle _states = battleObj.GetComponent<StatesOnBattle>();
 
-                DamageProcess(_states._attack, _skillData._skills[character]);
+                DamageProcess(_states, _skillData._skills[character]);
                 break;
             }
         }
     }
     /// <summary>攻撃を受けた時の処理</summary>
-    void DamageProcess(int character,SkillData skill)
+    void DamageProcess(StatesOnBattle _states,SkillData skill)
     {
         float skillDamage = skill._hpDamage;
-        float damage = skillDamage / 100 * character;
+        float damage = skillDamage / 100 * _states._attack - _diffence;
+        //最低保障ダメージ　レベルごとに変動
+        if(damage <= 1)
+        {
+            damage = 1;
+        }
         _health -= (int)damage;
     }
 }

@@ -13,6 +13,10 @@ public class TurnText : MonoBehaviour, ITurn
     }
     public void Enemy()
     {
-        this.GetComponent<Text>().text = "“G‚Ìƒ^[ƒ“";
+        this.GetComponent<Text>().text = "“Gs“®‘I‘ğ";
+    }
+    public void EnemyAction()
+    {
+        this.GetComponent<Text>().text = "“GUŒ‚";
     }
 }

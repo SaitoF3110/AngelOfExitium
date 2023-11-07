@@ -63,6 +63,10 @@ public class BattleManager : MonoBehaviour
             {
                 i?.Enemy();
             }
+            else if (Input.GetKeyDown(KeyCode.V))
+            {
+                i?.EnemyAction();
+            }
         }
     }
 }
