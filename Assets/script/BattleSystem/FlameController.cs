@@ -47,7 +47,7 @@ public class FlameController : MonoBehaviour
             if (vector2s[i][0].x == _position.x && vector2s[i][0].y == _position.y)
             {
                 _battleObject = gameObjects[i];
-                _sr.color = _bfm._friend;
+                //_sr.color = _bfm._friend;
                 break;
             }
             if(i == gameObjects.Length - 1)
@@ -63,6 +63,14 @@ public class FlameController : MonoBehaviour
             if (aa.y == _position.y && aa.x == _position.x)
             {
                 _sr.color = _bfm._AA;
+                break;
+            }
+        }
+        foreach (var aaa in _AAA)
+        {
+            if (aaa.y == _position.y && aaa.x == _position.x)
+            {
+                _sr.color = _bfm._AAA;
                 break;
             }
         }

@@ -4,8 +4,6 @@ using UnityEngine;
 /// <summary>バトルの全体管理</summary>
 public class BattleManager : MonoBehaviour
 {
-    /// <summary>現在ターン数</summary>
-    int _turn = 0;
     /// <summary>バトルオブジェクトの位置</summary>
     public Dictionary<GameObject, Vector2[]> _ObjectPositions = new Dictionary<GameObject, Vector2[]>();//位置が複数ある敵もいる
     /// <summary>バトルオブジェクトが移動したかどうか</summary>
@@ -26,7 +24,13 @@ public class BattleManager : MonoBehaviour
     void Update()
     {
         CharactorPositions();
-        Turn();
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            foreach (KeyValuePair<GameObject, Vector2[]> item in _ObjectPositions)
+            {
+                Debug.Log("キャラ：" + item.Key + "　位置" + item.Value[0]);
+            }
+        }
     }
     /// <summary>戦闘中の全キャラクターオブジェクトとその位置を渡す</summary>
     void CharactorPositions()
@@ -41,32 +45,5 @@ public class BattleManager : MonoBehaviour
             i++;
         }
         _charaPosi(characters,vector2s);
-    }
-    /// <summary>ITurnの制御</summary>
-    void Turn()
-    {
-        var objects = FindObjectsOfType<GameObject>();
-        foreach (var obj in objects)
-        {
-            //とりあえずテキトー
-            //後で必要になった時修正
-            ITurn i = obj.GetComponent<ITurn>();
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                i?.Friend();
-            }
-            else if (Input.GetKeyDown(KeyCode.X))
-            {
-                i?.FriendAction();
-            }
-            else if (Input.GetKeyDown(KeyCode.C))
-            {
-                i?.Enemy();
-            }
-            else if (Input.GetKeyDown(KeyCode.V))
-            {
-                i?.EnemyAction();
-            }
-        }
     }
 }

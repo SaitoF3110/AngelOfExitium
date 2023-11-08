@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a96da8decb6ac459d49c716e492089, type: 3}
+  m_Name: EnemySkill1
+  m_EditorClassIdentifier: 
+  _skillName: "\u5168\u4F53\u653B\u6483"
+  _skillInfo: []
+  _skillID: 0
+  _spendSP: 0
+  _spendHP: 0
+  _attackAreas:
+  - {x: 1, y: 1}
+  - {x: 1, y: 0}
+  - {x: 1, y: -1}
+  _range: 0
+  _width: 1
+  _penetratValue: 0
+  _allTarget: 1
+  _effect: 0
+  _effectTurn: 0
+  _hpDamage: 100
+  _spDamage: 0
+  _attackPercentage: 100
+  _diffencePercentage: 100
