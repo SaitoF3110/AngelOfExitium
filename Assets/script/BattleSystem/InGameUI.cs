@@ -18,7 +18,7 @@ public class InGameUI : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
             clickedGameObject = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,7 +29,7 @@ public class InGameUI : MonoBehaviour
                 clickedGameObject = hit.collider.gameObject;
             }
 
-            Debug.Log(clickedGameObject);
+            //Debug.Log(clickedGameObject);
         }
     }
 }

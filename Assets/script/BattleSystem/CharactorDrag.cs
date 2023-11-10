@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -13,6 +14,14 @@ public class CharactorDrag : MonoBehaviour, ITurn
     Vector3 _mouseDown;
     Vector3 _mouseMove;
     bool _allowDrag = true;
+
+    /// <summary>クリックした時、そのゲームオブジェクトを送信。バトルゲームオブジェクト以外をクリックしたときは呼ばれない。</summary>
+    event Action<GameObject> _clickedGameObject;
+    public Action<GameObject> ClickedGameObject
+    {
+        get { return _clickedGameObject; }
+        set { _clickedGameObject = value; }
+    }
     void Start()
     {
 
@@ -46,27 +55,40 @@ public class CharactorDrag : MonoBehaviour, ITurn
             }
             _mouseMove = Input.mousePosition;//現在のマウスの座標取得
             Vector3 distance = _mouseDown - _mouseMove;//距離
-            if (dragGameObject != null)
+            if (dragGameObject != null && clickGameObject != null)
             {
                 if (dragGameObject.tag == "Flame")
                 {
                     _controller = clickGameObject.GetComponent<FlameController>();
                     _dragController = dragGameObject.GetComponent<FlameController>();
-                    //マウスをドラッグして、かつ、バトルオブジェクトがあったらtrueに
-                    if (distance.x * distance.x > 100 && _controller._battleObject == this.gameObject || distance.y * distance.y > 100 && _controller._battleObject == this.gameObject)
+                    if(_controller != null && _dragController != null)
                     {
-                        _isDragging = true;
-                    }
-                    if(!_dragController._isEnemy && _isDragging)
-                    {
-                        this.transform.localPosition = new Vector3(_dragController._position.x * 5, 0,
-                             _dragController._position.y * -5);
+                        //マウスをドラッグして、かつ、バトルオブジェクトがあったらtrueに
+                        if (distance.x * distance.x > 100 && _controller._battleObject == this.gameObject || distance.y * distance.y > 100 && _controller._battleObject == this.gameObject)
+                        {
+                            _isDragging = true;
+                        }
+                        if (!_dragController._isEnemy && _isDragging)
+                        {
+                            this.transform.localPosition = new Vector3(_dragController._position.x * 5, 0,
+                                 _dragController._position.y * -5);
+                        }
                     }
                 }
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
+            if(!_isDragging && clickGameObject != null)
+            {
+                _controller = clickGameObject.GetComponent<FlameController>();
+                if( _controller != null && _controller._battleObject == this.gameObject)
+                {
+                    //デリゲートで呼び出し。
+                    ClickedGameObject(this.gameObject);
+                    //Debug.Log(_controller._battleObject);
+                }
+            }
             _isDragging = false;
         }
 
